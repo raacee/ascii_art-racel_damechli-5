@@ -1,4 +1,6 @@
 from art import tprint
+import colorama
+colorama.init()
 
 def select_font():
     fonts = ["block", "banner", "standard", "avatar", "3d_diagonal"]
