@@ -44,6 +44,10 @@ def main():
 
     while True:
         s = input("Write something: ")
+        if not s.strip():
+            print("Please enter a word or a sentence.")
+            continue
+
         font_choice = select_font()
         color_code = select_color()
         ascii_art = text2art(s, font=font_choice)
