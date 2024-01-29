@@ -31,14 +31,21 @@ def select_color():
     color_choice = input("Enter the name of the choosen color (let empty for no specific color) : ").lower()
     return colors.get(color_choice, "")
 
+
 def main():
     colorama.init()
-    s = input("Write something : ")
-    font_choice = select_font()
-    color_code = select_color()
-    ascii_art = text2art(s, font=font_choice)
-    colored_ascii_art = color_text(ascii_art, color_code) if color_code else ascii_art
-    print(colored_ascii_art)
+
+    while True:
+        s = input("Write something : ")
+        font_choice = select_font()
+        color_code = select_color()
+        ascii_art = text2art(s, font=font_choice)
+        colored_ascii_art = color_text(ascii_art, color_code) if color_code else ascii_art
+        print(colored_ascii_art)
+
+        continue_choice = input("Do you want to continue? (yes/no) : ").lower()
+        if continue_choice != "yes":
+            break
 
 if __name__ == "__main__":
     main()
