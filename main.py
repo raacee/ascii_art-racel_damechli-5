@@ -1,4 +1,4 @@
-from art import tprint
+from art import text2art
 import colorama
 
 def select_font():
