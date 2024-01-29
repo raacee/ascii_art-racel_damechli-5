@@ -36,7 +36,7 @@ def main():
     s = input("Write something : ")
     font_choice = select_font()
     color_code = select_color()
-    ascii_art = tprint(s, font=font_choice, chr_ignore=True)
+    ascii_art = text2art(s, font=font_choice)
     colored_ascii_art = color_text(ascii_art, color_code) if color_code else ascii_art
     print(colored_ascii_art)
 
