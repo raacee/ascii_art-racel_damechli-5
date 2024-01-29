@@ -1,6 +1,5 @@
 from art import tprint
 import colorama
-colorama.init()
 
 def select_font():
     fonts = ["block", "banner", "standard", "avatar", "3d_diagonal"]
@@ -33,6 +32,7 @@ def select_color():
     return colors.get(color_choice, "")
 
 def main():
+    colorama.init()
     s = input("Write something : ")
     font_choice = select_font()
     color_code = select_color()
