@@ -1,12 +1,13 @@
-from art import tprint, ART_FONTS
+from art import tprint
 
 def select_font():
-    print("Choisissez une police pour votre art ASCII :")
-    for i, font in enumerate(ART_FONTS, start=1):
+    fonts = ["block", "banner", "standard", "avatar", "3d_diagonal"]
+    print("Choose a police for your art ASCII :")
+    for i, font in enumerate(fonts, start=1):
         print(f"{i}. {font}")
-    
-    choice = input("Entrez le numéro de votre choix de police : ")
-    return ART_FONTS[int(choice) - 1] if choice.isdigit() and 0 < int(choice) <= len(ART_FONTS) else ART_FONTS[0]
+
+    choice = input("Enter the number of your font choice : ")
+    return fonts[int(choice) - 1] if choice.isdigit() and 0 < int(choice) <= len(fonts) else fonts[0]
 
 def main():
     s = input("Write something : ")
