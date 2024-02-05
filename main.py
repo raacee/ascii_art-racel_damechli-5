@@ -39,6 +39,30 @@ def select_color():
         else:
             print("Invalid color. Please enter a valid color name.")
 
+def sanitize_text(text):
+    """
+    Replaces special characters (mostly for the french usage) in the text with their ASCII equivalents. 
+    """
+    replacements = {
+        'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e',
+        'à': 'a',
+        'ç': 'c',
+        'ù': 'u', 'û': 'u',
+        'î': 'i', 'ï': 'i',
+        'ô': 'o',
+        # Uppercase versions
+        'É': 'E', 'È': 'E', 'Ê': 'E', 'Ë': 'E',
+        'À': 'A',
+        'Ç': 'C',
+        'Ù': 'U', 'Û': 'U',
+        'Î': 'I', 'Ï': 'I',
+        'Ô': 'O'
+    }
+    sanitized_text = text
+    for original, replacement in replacements.items():
+        sanitized_text = sanitized_text.replace(original, replacement)
+    return sanitized_text
+
 def main():
     colorama.init()
 
@@ -48,9 +72,12 @@ def main():
             print("Please enter a word or a sentence.")
             continue
 
+        # Sanitize the input text
+        sanitized_s = sanitize_text(s)
+
         font_choice = select_font()
         color_code = select_color()
-        ascii_art = text2art(s, font=font_choice)
+        ascii_art = text2art(sanitized_s, font=font_choice) # Use sanitized_s instead of s
         colored_ascii_art = color_text(ascii_art, color_code) if color_code else ascii_art
         print(colored_ascii_art)
 
